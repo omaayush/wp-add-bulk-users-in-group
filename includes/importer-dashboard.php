@@ -42,7 +42,7 @@ if(isset($_POST['users'])){
           else{
             $id=$idarr[0][0];
             global $wpdb;
-            $results2 = $wpdb->get_results( "insert into ".$table_prefix."_groups_user_group values (".$id.",".$groupid.")", ARRAY_N );
+            $results2 = $wpdb->get_results( "insert into ".$table_prefix."groups_user_group values (".$id.",".$groupid.")", ARRAY_N );
             echo "<b style='color:green;' >".$userarr[$i]." has been added :)</b></br> ";
           
           }
@@ -54,7 +54,7 @@ if(isset($_POST['users'])){
 
 function get_user_id($username){
   global $wpdb;
-  $results1 = $wpdb->get_results( "select ID from ".$table_prefix."_users where user_login='".$username."'", ARRAY_N );
+  $results1 = $wpdb->get_results( "select ID from ".$table_prefix."users where user_login='".$username."'", ARRAY_N );
   return $results1;              
 }
 ?>
@@ -85,7 +85,7 @@ function get_user_id($username){
                       <?php
                       global $wpdb;
                       echo '<option value="none">Choose Group</option>';
-                      $results = $wpdb->get_results( 'select name,group_id from '.$table_prefix.'_groups_group', ARRAY_N );
+                      $results = $wpdb->get_results( 'select name,group_id from '.$table_prefix.'groups_group', ARRAY_N );
                       for($i=0;$i<sizeof($results);$i++){
                           $groupname=$results[$i][0];
                           $groupid=$results[$i][1];
